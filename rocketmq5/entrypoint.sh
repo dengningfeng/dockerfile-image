@@ -1,0 +1,2 @@
+nohup sh /usr/local/rocketmq/bin/mqnamesrv > /var/log/rocketmq.d/namesrv.log 2>&1 &
+nohup sh /usr/local/rocketmq/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=true > /var/log/rocketmq.d/broker.log 2>&1 &
