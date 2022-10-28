@@ -9,6 +9,8 @@
 | kibana       | /usr/share/kibana                                                                                 | 
 | es配置文件地址     | /usr/share/elasticsearch/config/elasticsearch.yml                                                                                                  |
 | kibana配置文件地址 | /usr/share/kibana/config/kibana.yml                                                                   |
+| es日志地址       |  /var/log/es.log                                                                                                     |
+| kibana日志地址   |       /var/log/kibana.log                                                                                                               |
 
 ## 端口
 | 端口    | 说明             |
