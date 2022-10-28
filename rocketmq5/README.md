@@ -25,3 +25,14 @@
 | NAMESRV_ADDR  | nameServer地址 | 127.0.0.1:9876 |
 | NAMESRV_ADDR  | broker ip地址  | 127.0.0.1      |
 
+## 容器构建运行
+### 1、进入Dockerfile文件同级目录下
+
+### 2、执行构建命令
+```shell
+docker build -t dev/rockermq:5 .
+```
+### 3、运行容器
+```shell
+docker run -d -p 9876:9876 -p 10909:10909 -p 10911:10911 --name=dev-rockermq dev/rocketmq:5
+```
