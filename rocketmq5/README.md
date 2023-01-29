@@ -34,5 +34,9 @@ docker build -t dev/rocketmq:5.0.0 .
 ```
 ### 3、运行容器
 ```shell
+<<<<<<< HEAD
 docker run -d -p 9876:9876 -p 10909:10909 -p 10911:10911 --name=dev-rocketmq dev/rocketmq:5.0.0
+=======
+docker run -d -p 9876:9876 -p 10909:10909 -p 10911:10911 --name=dev-rocketmq dev/rocketmq:5
+>>>>>>> 043e007ae4f55fbe75407559ecf5567f2feecde8
 ```
