@@ -1,4 +1,5 @@
 FROM king019/rocketmq:latest@sha256:698381b0826274389ec0ac16dd69c724e386a1d5a4030dc164e0e9263a9e9091 as rocketmq
+FROM maven:3-jdk-8-slim@sha256:51a7ccc74baeb8aca0a870ccfa32c06398386917485907a6048f0c712e5ffc9a as jdk8
 FROM debian:10.12-slim@sha256:4d478ecf606675c4e697fabecb9ee2007ddcd1992ab4ad046eb495565296810d
 # 环境变量设置
 ENV NAMESRV_ADDR='127.0.0.1:9876' BROKER_IP='localhost'
@@ -19,12 +20,8 @@ RUN echo \
         apt-get update && \
         apt-get install -y --no-install-recommends vim sudo net-tools
 # java相关设置
-COPY --from=rocketmq /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.aarch64 /usr/lib/jvm/jdk8
-COPY --from=rocketmq /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.aarch64/lib/calendars.properties /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.aarch64/lib/calendars.properties
-COPY --from=rocketmq /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.aarch64/lib/logging.properties /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.aarch64/lib/logging.properties
-COPY --from=rocketmq /usr/share/javazi-1.8/tzdb.dat /usr/share/javazi-1.8/tzdb.dat
-RUN rm -rf /usr/lib/jvm/jdk8/jre/lib/security/policy/unlimited/*
-COPY unlimit/* /usr/lib/jvm/jdk8/jre/lib/security/policy/unlimited/
+COPY --from=jdk8 /usr/local/openjdk-8 /usr/lib/jvm/jdk8
+
 # rocketmq设置
 RUN mkdir -p /usr/local/rocketmq && mkdir -p /var/log/rocketmq.d
 COPY --from=rocketmq /opt/soft/rocketmq /usr/local/rocketmq

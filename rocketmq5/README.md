@@ -1,4 +1,4 @@
-# rocketmq:5镜像说明
+# rocketmq:5.0.0镜像说明
 包含nameServer和broker
 
 ## 相关文件路径
@@ -30,9 +30,9 @@
 
 ### 2、执行构建命令
 ```shell
-docker build -t dev/rockermq:5 .
+docker build -t dev/rocketmq:5.0.0 .
 ```
 ### 3、运行容器
 ```shell
-docker run -d -p 9876:9876 -p 10909:10909 -p 10911:10911 --name=dev-rockermq dev/rocketmq:5
+docker run -d -p 9876:9876 -p 10909:10909 -p 10911:10911 --name=dev-rocketmq dev/rocketmq:5.0.0
 ```
