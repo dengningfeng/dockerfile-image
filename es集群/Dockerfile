@@ -12,8 +12,7 @@ RUN echo \
         deb-src http://mirrors.163.com/debian-security/ buster/updates main non-free contrib \
         > /etc/apt/sources.list && \
         apt-get update && \
-        apt-get install -y --no-install-recommends vim sudo net-tools && \
-        apt-get install procps -y
+        apt-get install -y --no-install-recommends vim sudo net-tools procps
 
 RUN echo 'es soft nofile 65536' >> /etc/security/limits.conf && echo 'es hard nofile 65536' >> /etc/security/limits.conf
 
